@@ -89,7 +89,11 @@ function addMovie(imdbID) {
       if (response.status === 201) {
         // Task 2.2: Make sure to remove the added movie from the search results to avoid
         // giving the user the option to add it again.
-    
+
+        const movieElement = document.getElementById(`result-${imdbID}`);
+        if (movieElement) {
+          movieElement.remove();
+        }
         loadMovies();
         updateGenres();
       } else if (response.status === 200) {
@@ -137,6 +141,27 @@ function searchMovies(query) {
       // include an "Add" button for each result that calls `addMovie(imdbID)` when clicked.
       // There is a second part to this task, in `addMovie`
 
+      if (results.length === 0) {
+        resultsDiv.textContent = `Keine Filme gefunden.`;
+        return;
+      }
+      results.forEach(movie => {
+        const movieItem = document.createElement(`div`);
+        movieItem.className = `search-result-item`;
+        movieItem.id = `result-${movie.imdbID}`;
+
+        const info = document.createElement(`span`);
+        info.textContent = `${movie.Title} (${movie.Year})`;
+        movieItem.appendChild(info);
+
+        const addButton = document.createElement(`button`);
+        addButton.textContent = `Hinzufügen`;
+        addButton.type = `button`;
+        addButton.onclick = () => addMovie(movie.imdbID);
+
+        movieItem.appendChild(addButton);
+        resultsDiv.appendChild(movieItem);
+      });
     })
     .catch(error => {
       console.error('Search failed:', error);
@@ -168,6 +193,16 @@ window.onload = function () {
       // Task 1.2: Render a user greeting to `#userGreeting` 
       // using `firstName`, `lastName`, and the server-provided
       // login timestamp.
+
+      const loginDate = new Date(currentSession.loginTime);
+      const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+      const timeOptions = { hour: '2-digit', minute: '2-digit' };
+
+      const dateStr = loginDate.toLocaleDateString('de-AT', dateOptions);
+      const timeStr = loginDate.toLocaleTimeString('de-AT', timeOptions);
+
+      greetingElement.textContent = `Hi ${currentSession.firstName} ${currentSession.lastName}, du hast dich am ${dateStr} um ${timeStr} angemeldet.`;
+    ;
     } else {
       greetingElement.textContent = messages.loggedOutGreeting;
     }
@@ -208,7 +243,7 @@ window.onload = function () {
   }
 
   // Login dialog
-  document.getElementById('loginForm').addEventListener('submit', (e) => {
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -216,6 +251,30 @@ window.onload = function () {
     // with username and password, handle errors, save the response 
     // into `currentSession`, then call `updateUI()` and `loadMovies()`.
 
+    const data = Object.fromEntries(formData.entries());
+    console.log("Vorbereitete Daten:", data);
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers : {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) {
+      const errorData = await response.json();
+      alert("Login fehlgeschlagen: " + (errorData.message || "Unbekannter Fehler"));
+      return;
+    }
+    currentSession = await response.json(); 
+    console.log("Login erfolgreich, Session-Daten:", currentSession);
+    document.getElementById('loginDialog').close();
+    updateUI();
+    loadMovies();
+    } catch (error) {
+      console.error("Netzwerkfehler beim Login:", error);
+      alert("Ein Netzwerkfehler ist aufgetreten. Bitte prüfe die Server-Verbindung.")
+    }
   });
 
   document.getElementById('cancelLogin').addEventListener('click', () => {
@@ -233,11 +292,12 @@ window.onload = function () {
   document.getElementById('searchForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const query = document.getElementById('query').value;
-    searchMovies(query);
+    if (query) {
+      searchMovies(query);
+    }
   });
 
   document.getElementById('cancelSearch').addEventListener('click', () => {
     document.getElementById('searchDialog').close();
   });
 };
-

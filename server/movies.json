@@ -1,40 +1,64 @@
 {
   "joe": {
-    "tt0399295": {
-      "imdbID": "tt0399295",
-      "Title": "Lord of War",
-      "Released": "2005-09-15",
-      "Runtime": 122,
-      "Genres": [
-        "Crime",
-        "Drama"
-      ],
+    "tt0120737": {
+      "Title": "The Lord of the Rings: The Fellowship of the Ring",
+      "Year": 2001,
+      "imdbID": "tt0120737",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+      "Plot": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
       "Directors": [
-        "Andrew Niccol"
+        "Peter Jackson"
       ],
       "Writers": [
-        "Andrew Niccol"
+        "J.R.R. Tolkien",
+        "Fran Walsh",
+        "Philippa Boyens"
       ],
       "Actors": [
-        "Nicolas Cage",
-        "Ethan Hawke",
-        "Jared Leto"
+        "Elijah Wood",
+        "Ian McKellen",
+        "Orlando Bloom"
       ],
-      "Plot": "An arms dealer confronts the morality of his work as he is being chased by an INTERPOL Agent.",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BNThlY2NkYmMtNTFhNi00MzBiLWJmNzEtZjk5MzYwYWU2MjllXkEyXkFqcGc@._V1_SX300.jpg",
-      "Metascore": 62,
-      "imdbRating": 7.6
-    },
-    "tt0167260": {
-      "imdbID": "tt0167260",
-      "Title": "The Lord of the Rings: The Return of the King",
-      "Released": "2003-12-16",
-      "Runtime": 201,
       "Genres": [
         "Adventure",
         "Drama",
         "Fantasy"
+      ]
+    },
+    "tt0167261": {
+      "Title": "The Lord of the Rings: The Two Towers",
+      "Year": 2002,
+      "imdbID": "tt0167261",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMGQxMDdiOWUtYjc1Ni00YzM1LWE2NjMtZTg3Y2JkMjEzMTJjXkEyXkFqcGc@._V1_QL75_UX380_CR0,14,380,562_.jpg",
+      "Plot": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard.",
+      "Directors": [
+        "Peter Jackson"
       ],
+      "Writers": [
+        "J.R.R. Tolkien",
+        "Fran Walsh",
+        "Philippa Boyens"
+      ],
+      "Actors": [
+        "Elijah Wood",
+        "Ian McKellen",
+        "Viggo Mortensen"
+      ],
+      "Genres": [
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ]
+    },
+    "tt0167260": {
+      "Title": "The Lord of the Rings: The Return of the King",
+      "Year": 2003,
+      "imdbID": "tt0167260",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTZkMjBjNWMtZGI5OC00MGU0LTk4ZTItODg2NWM3NTVmNWQ4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Plot": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
       "Directors": [
         "Peter Jackson"
       ],
@@ -48,37 +72,11 @@
         "Viggo Mortensen",
         "Ian McKellen"
       ],
-      "Plot": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMTZkMjBjNWMtZGI5OC00MGU0LTk4ZTItODg2NWM3NTVmNWQ4XkEyXkFqcGc@._V1_SX300.jpg",
-      "Metascore": 94,
-      "imdbRating": 9
-    },
-    "tt0057261": {
-      "imdbID": "tt0057261",
-      "Title": "Lord of the Flies",
-      "Released": "1963-08-12",
-      "Runtime": 92,
       "Genres": [
         "Adventure",
         "Drama",
-        "Thriller"
-      ],
-      "Directors": [
-        "Peter Brook"
-      ],
-      "Writers": [
-        "William Golding",
-        "Peter Brook"
-      ],
-      "Actors": [
-        "James Aubrey",
-        "Tom Chapin",
-        "Hugh Edwards"
-      ],
-      "Plot": "Schoolboys marooned on a Pacific island create their own savage civilization.",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BY2RiOTM0ZDgtNDRlMi00MDMzLWI1NDYtY2NjZDM4YTkwNWVlXkEyXkFqcGc@._V1_SX300.jpg",
-      "Metascore": 67,
-      "imdbRating": 6.9
+        "Fantasy"
+      ]
     }
   },
   "jane": {

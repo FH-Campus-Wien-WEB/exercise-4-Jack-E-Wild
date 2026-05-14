@@ -55,6 +55,22 @@
     <!-- Task 2.1: Add a search dialog markup. Make sure the ids of the elements 
      match the ones used in index.js. Your dialog needs a form and submit and cancel
      buttons. -->
+
+     <dialog id="searchDialog">
+  <form id="searchForm" method="dialog">
+    <h2>Filme suchen</h2>
+
+    <label for="query">Titel:</label>
+    <input type="text" id="query" name="query" required>
+  
+    <div id="searchResults"></div>
+    
+    <div class="dialog-buttons">
+      <button type="submit" id="submitSearch">Suchen</button>
+      <button type="button" id="cancelSearch">Abbrechen</button>
+    </div>
+  </form>
+</dialog>
     
   </body>
 </html>

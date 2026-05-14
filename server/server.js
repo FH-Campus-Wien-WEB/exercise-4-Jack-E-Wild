@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -23,7 +24,7 @@ app.use(session({
 // Serve static content in directory 'files'
 app.use(express.static(path.join(__dirname, "files")));
 
-app.post("/login", function (req, res) {
+app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = userModel[username];
   if (user && bcrypt.compareSync(password, user.password)) {
@@ -33,7 +34,14 @@ app.post("/login", function (req, res) {
       lastName: user.lastName,
       loginTime: new Date().toISOString(),
     };
+
+    req.session.save((err) => {
+      if (err) {
+        console.error("Session-Speicherfehler:", err);
+        return res.sendStatus(500);
+      }
     res.send(req.session.user);
+    });
   } else {
     res.sendStatus(401);
   }
@@ -44,7 +52,26 @@ app.post("/login", function (req, res) {
 // with error handling. Protect all endpoints that need 
 // authentication with `requireLogin`.
 
-app.get("/session", function (req, res) {
+function requireLogin(req, res, next) {
+  if (req.session && req.session.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+}
+
+app.get('/logout', requireLogin, (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Fehler beim Logout:', err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+app.get("/session", requireLogin, (req, res) => {
   if (req.session.user) {
     res.send(req.session.user);
   } else {
@@ -52,7 +79,7 @@ app.get("/session", function (req, res) {
   }
 });
 
-app.get("/movies", function (req, res) {
+app.get("/movies", requireLogin, (req, res) => {
   const username = req.session.user.username;
   let movies = Object.values(movieModel.getUserMovies(username));
   const queriedGenre = req.query.genre;
@@ -63,7 +90,7 @@ app.get("/movies", function (req, res) {
 });
 
 // Configure a 'get' endpoint for a specific movie
-app.get("/movies/:imdbID", function (req, res) {
+app.get("/movies/:imdbID", requireLogin, (req, res) => {
   const username = req.session.user.username;
   const id = req.params.imdbID;
   const movie = movieModel.getUserMovie(username, id);
@@ -76,7 +103,7 @@ app.get("/movies/:imdbID", function (req, res) {
 });
 
 // Configure a 'put' endpoint for a specific movie to update or insert a movie
-app.put("/movies/:imdbID", function (req, res) {
+app.put("/movies/:imdbID", requireLogin, (req, res) => {
   const username = req.session.user.username;
   const imdbID = req.params.imdbID;
   const exists = movieModel.getUserMovie(username, imdbID) !== undefined;
@@ -85,13 +112,60 @@ app.put("/movies/:imdbID", function (req, res) {
     // Task 2.3: Fetch the movie data from OmdbAPI, follow the pattern used further down 
     // in the GET /search endpoint. Implement conversion of the OmdbAPI response to the 
     // movie format used in the frontend. Make sure to handle errors and timeouts properly.
+
+    const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=${config.omdbApiKey}`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+    fetch(url, { signal: controller.signal })
+      .then(apiRes => {
+        if (!apiRes.ok) {
+          throw new Error(`HTTP Fehler: ${apiRes.status}`);
+        }
+        return apiRes.json();
+      })
+      .then(movieData => {
+        if (movieData.Response === 'True') {
+     
+          const internalMovieFormat = {
+            Title: movieData.Title,
+            Year: isNaN(parseInt(movieData.Year)) ? movieData.Year : parseInt(movieData.Year),
+            imdbID: movieData.imdbID,
+            Type: movieData.Type,
+            Poster: movieData.Poster,
+            Plot: movieData.Plot,
+            Directors: movieData.Director ? movieData.Director.split(', ').map(d => d.trim()) : [],
+            Writers: movieData.Writer ? movieData.Writer.split(', ').map(w => w.trim()) : [],
+            Actors: movieData.Actors ? movieData.Actors.split(', ').map(a => a.trim()) : [],
+            Genres: movieData.Genre ? movieData.Genre.split(', ').map(g => g.trim()) : []
+          };
+
+          movieModel.setUserMovie(username, imdbID, internalMovieFormat);
+
+          res.sendStatus(201);
+
+  } else {
+    res.status(404).send("Film nicht auf OMDb gefunden.");
+  }
+})
+.catch(err => {
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') {
+          console.error('OMDb API Timeout');
+          res.sendStatus(504);
+        } else {
+          console.error('Fehler beim Abrufen der Filmdaten:', err);
+          res.sendStatus(500);
+        }
+      });
   } else {
     movieModel.setUserMovie(username, imdbID, req.body);
     res.sendStatus(200);
   }
 });
 
-app.delete("/movies/:imdbID", function (req, res) {
+app.delete("/movies/:imdbID", requireLogin, (req, res) => {
   const username = req.session.user.username;
   const id = req.params.imdbID;
   if (movieModel.deleteUserMovie(username, id)) {
@@ -102,7 +176,7 @@ app.delete("/movies/:imdbID", function (req, res) {
 });
 
 // Configure a 'get' endpoint for genres of all movies of the current user
-app.get("/genres", function (req, res) {
+app.get("/genres", requireLogin, (req, res) => {
   const username = req.session.user.username;
   const genres = movieModel.getGenres(username);
   genres.sort();
@@ -112,14 +186,15 @@ app.get("/genres", function (req, res) {
 /* Task 2.1. Add the GET /search endpoint: Query omdbapi.com and return
    a list of the results you obtain. Only include the properties 
    mentioned in the README when sending back the results to the client. */
-app.get("/search", function (req, res) {
+app.get("/search", requireLogin, (req, res) => {
+
   const username = req.session.user.username;
   const query = req.query.query;
   if (!query) {
     return res.sendStatus(400);
   }
 
-  const url = `http://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${config.omdbApiKey}`;
+  const url = `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${config.omdbApiKey}`;
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), config.omdbTimeoutMs);
@@ -130,14 +205,11 @@ app.get("/search", function (req, res) {
       if (!apiRes.ok) {
         return res.sendStatus(apiRes.status);
       }
-      return apiRes.text().then(data => {
-        let response;
-        try {
-          response = JSON.parse(data);
-        } catch (parseError) {
-          console.error('Failed to parse OMDb response:', parseError);
-          return res.sendStatus(500);
-        }
+      return apiRes.json();
+    })
+      .then(response => {
+
+        if (res.headersSent) return;
 
         if (response.Response === 'True') {
           const results = response.Search
@@ -151,16 +223,18 @@ app.get("/search", function (req, res) {
         } else {
           res.send([]);
         }
-      });
     })
     .catch((err) => {
       clearTimeout(timeoutId);
-      if (err.name === 'AbortError') {
-        console.error('OMDb API request timeout');
-        return res.sendStatus(504);
-      }
+      if (!res.headersSent) {
+        if (err.name === 'AbortError') {
+          console.error('OMDb API request timeout');
+          res.sendStatus(504);
+        } else {
       console.error('OMDb API error:', err);
       res.sendStatus(500);
+        }
+      }
     });
 });
 
