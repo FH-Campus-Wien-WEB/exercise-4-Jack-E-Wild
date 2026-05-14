@@ -140,7 +140,7 @@ app.put("/movies/:imdbID", requireLogin, (req, res) => {
             Actors: movieData.Actors ? movieData.Actors.split(', ').map(a => a.trim()) : [],
             Genres: movieData.Genre ? movieData.Genre.split(', ').map(g => g.trim()) : [],
             Runtime: parseInt(movieData.Runtime),
-            Released: movieData.Released
+            Released: movieData.Released !== "N/A" ? new Date(movieData.Released).toISOString().split('T')[0] : ""
           };
 
           movieModel.setUserMovie(username, imdbID, internalMovieFormat);
@@ -162,7 +162,10 @@ app.put("/movies/:imdbID", requireLogin, (req, res) => {
         }
       });
   } else {
-    movieModel.setUserMovie(username, imdbID, req.body);
+    const existingMovie = movieModel.getUserMovie(username, imdbID);
+    const updateMovie = { ...existingMovie, ...req.body };
+
+    movieModel.setUserMovie(username, imdbID, updateMovie);
     res.sendStatus(200);
   }
 });

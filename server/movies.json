@@ -26,7 +26,9 @@
         "Fantasy"
       ],
       "Runtime": 178,
-      "Released": "19 Dec 2001"
+      "Released": "2001-12-18",
+      "Metascore": 0,
+      "imdbRating": 0
     },
     "tt0167261": {
       "Title": "The Lord of the Rings: The Two Towers",
@@ -54,7 +56,7 @@
         "Fantasy"
       ],
       "Runtime": 179,
-      "Released": "18 Dec 2002"
+      "Released": "2002-12-17"
     },
     "tt0167260": {
       "Title": "The Lord of the Rings: The Return of the King",
@@ -82,7 +84,7 @@
         "Fantasy"
       ],
       "Runtime": 201,
-      "Released": "17 Dec 2003"
+      "Released": "2003-12-16"
     },
     "tt0903624": {
       "Title": "The Hobbit: An Unexpected Journey",
@@ -109,34 +111,7 @@
         "Fantasy"
       ],
       "Runtime": 169,
-      "Released": "14 Dec 2012"
-    },
-    "tt2310332": {
-      "Title": "The Hobbit: The Battle of the Five Armies",
-      "Year": 2014,
-      "imdbID": "tt2310332",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMTYzNDE3OTQ3MF5BMl5BanBnXkFtZTgwODczMTg4MjE@._V1_QL75_UX380_CR0,1,380,562_.jpg",
-      "Plot": "Bilbo Baggins and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.",
-      "Directors": [
-        "Peter Jackson"
-      ],
-      "Writers": [
-        "Fran Walsh",
-        "Philippa Boyens",
-        "Peter Jackson"
-      ],
-      "Actors": [
-        "Ian McKellen",
-        "Martin Freeman",
-        "Richard Armitage"
-      ],
-      "Genres": [
-        "Adventure",
-        "Fantasy"
-      ],
-      "Runtime": 144,
-      "Released": "17 Dec 2014"
+      "Released": "2012-12-13"
     },
     "tt1170358": {
       "Title": "The Hobbit: The Desolation of Smaug",
@@ -163,7 +138,144 @@
         "Fantasy"
       ],
       "Runtime": 161,
-      "Released": "13 Dec 2013"
+      "Released": "2013-12-12"
+    },
+    "tt2310332": {
+      "Title": "The Hobbit: The Battle of the Five Armies",
+      "Year": 2014,
+      "imdbID": "tt2310332",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTYzNDE3OTQ3MF5BMl5BanBnXkFtZTgwODczMTg4MjE@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+      "Plot": "Bilbo Baggins and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.",
+      "Directors": [
+        "Peter Jackson"
+      ],
+      "Writers": [
+        "Fran Walsh",
+        "Philippa Boyens",
+        "Peter Jackson"
+      ],
+      "Actors": [
+        "Ian McKellen",
+        "Martin Freeman",
+        "Richard Armitage"
+      ],
+      "Genres": [
+        "Adventure",
+        "Fantasy"
+      ],
+      "Runtime": 144,
+      "Released": "2014-12-16"
+    },
+    "tt0094012": {
+      "Title": "Spaceballs",
+      "Year": 1987,
+      "imdbID": "tt0094012",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BZWNhNWM3NWQtNTMwNy00NThiLWFkZDYtYzBlZTQyZGU2YzE1XkEyXkFqcGc@._V1_SX300.jpg",
+      "Plot": "A star-pilot for hire and his trusty sidekick must come to the rescue of a princess and save Planet Druidia from the clutches of the evil Spaceballs.",
+      "Directors": [
+        "Mel Brooks"
+      ],
+      "Writers": [
+        "Mel Brooks",
+        "Thomas Meehan",
+        "Ronny Graham"
+      ],
+      "Actors": [
+        "Mel Brooks",
+        "John Candy",
+        "Rick Moranis"
+      ],
+      "Genres": [
+        "Adventure",
+        "Comedy",
+        "Sci-Fi"
+      ],
+      "Runtime": 96,
+      "Released": "1987-06-23"
+    },
+    "tt0093779": {
+      "Title": "The Princess Bride",
+      "Year": 1987,
+      "imdbID": "tt0093779",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMjFiOTEyNGMtN2E4MC00ZjZlLTk3ZDQtNTU1ZGNiZTA1MzJlXkEyXkFqcGc@._V1_SX300.jpg",
+      "Plot": "A bedridden boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies in his quest to be reunited with his true love.",
+      "Directors": [
+        "Rob Reiner"
+      ],
+      "Writers": [
+        "William Goldman"
+      ],
+      "Actors": [
+        "Cary Elwes",
+        "Mandy Patinkin",
+        "Robin Wright"
+      ],
+      "Genres": [
+        "Adventure",
+        "Comedy",
+        "Family"
+      ],
+      "Runtime": 98,
+      "Released": "1987-10-08"
+    },
+    "tt0059126": {
+      "Title": "Dr. Who and the Daleks",
+      "Year": 1965,
+      "imdbID": "tt0059126",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNzc0YTY2NjAtOGI2NC00YmEzLWJlNTQtNjIwNDA3ZTJkNDY4XkEyXkFqcGc@._V1_SX300.jpg",
+      "Plot": "An eccentric inventor and his companions travel in his TARDIS to the Planet Skaro and battle the evil menace of the Daleks.",
+      "Directors": [
+        "Gordon Flemyng"
+      ],
+      "Writers": [
+        "Terry Nation",
+        "Milton Subotsky",
+        "Sydney Newman"
+      ],
+      "Actors": [
+        "Peter Cushing",
+        "Roy Castle",
+        "Jennie Linden"
+      ],
+      "Genres": [
+        "Adventure",
+        "Drama",
+        "Sci-Fi"
+      ],
+      "Runtime": 82,
+      "Released": "1966-06-30"
+    },
+    "tt1702439": {
+      "Title": "Safe Haven",
+      "Year": 2013,
+      "imdbID": "tt1702439",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTg4MzcxODA3OV5BMl5BanBnXkFtZTcwMTYzNDkwOQ@@._V1_SX300.jpg",
+      "Plot": "A young woman with a mysterious past lands in Southport, North Carolina where her bond with a widower forces her to confront the dark secret that haunts her.",
+      "Directors": [
+        "Lasse Hallström"
+      ],
+      "Writers": [
+        "Dana Stevens",
+        "Gage Lansky",
+        "Nicholas Sparks"
+      ],
+      "Actors": [
+        "Julianne Hough",
+        "Josh Duhamel",
+        "Cobie Smulders"
+      ],
+      "Genres": [
+        "Drama",
+        "Romance",
+        "Thriller"
+      ],
+      "Runtime": 115,
+      "Released": "2013-02-13"
     }
   },
   "jane": {
