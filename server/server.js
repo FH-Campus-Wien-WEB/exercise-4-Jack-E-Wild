@@ -138,7 +138,9 @@ app.put("/movies/:imdbID", requireLogin, (req, res) => {
             Directors: movieData.Director ? movieData.Director.split(', ').map(d => d.trim()) : [],
             Writers: movieData.Writer ? movieData.Writer.split(', ').map(w => w.trim()) : [],
             Actors: movieData.Actors ? movieData.Actors.split(', ').map(a => a.trim()) : [],
-            Genres: movieData.Genre ? movieData.Genre.split(', ').map(g => g.trim()) : []
+            Genres: movieData.Genre ? movieData.Genre.split(', ').map(g => g.trim()) : [],
+            Runtime: parseInt(movieData.Runtime),
+            Released: movieData.Released
           };
 
           movieModel.setUserMovie(username, imdbID, internalMovieFormat);

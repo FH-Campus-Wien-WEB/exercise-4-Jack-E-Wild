@@ -24,7 +24,9 @@
         "Adventure",
         "Drama",
         "Fantasy"
-      ]
+      ],
+      "Runtime": 178,
+      "Released": "19 Dec 2001"
     },
     "tt0167261": {
       "Title": "The Lord of the Rings: The Two Towers",
@@ -50,7 +52,9 @@
         "Adventure",
         "Drama",
         "Fantasy"
-      ]
+      ],
+      "Runtime": 179,
+      "Released": "18 Dec 2002"
     },
     "tt0167260": {
       "Title": "The Lord of the Rings: The Return of the King",
@@ -76,7 +80,90 @@
         "Adventure",
         "Drama",
         "Fantasy"
-      ]
+      ],
+      "Runtime": 201,
+      "Released": "17 Dec 2003"
+    },
+    "tt0903624": {
+      "Title": "The Hobbit: An Unexpected Journey",
+      "Year": 2012,
+      "imdbID": "tt0903624",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "Plot": "A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home and the gold within it from the dragon Smaug.",
+      "Directors": [
+        "Peter Jackson"
+      ],
+      "Writers": [
+        "Fran Walsh",
+        "Philippa Boyens",
+        "Peter Jackson"
+      ],
+      "Actors": [
+        "Martin Freeman",
+        "Ian McKellen",
+        "Richard Armitage"
+      ],
+      "Genres": [
+        "Adventure",
+        "Fantasy"
+      ],
+      "Runtime": 169,
+      "Released": "14 Dec 2012"
+    },
+    "tt2310332": {
+      "Title": "The Hobbit: The Battle of the Five Armies",
+      "Year": 2014,
+      "imdbID": "tt2310332",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTYzNDE3OTQ3MF5BMl5BanBnXkFtZTgwODczMTg4MjE@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+      "Plot": "Bilbo Baggins and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.",
+      "Directors": [
+        "Peter Jackson"
+      ],
+      "Writers": [
+        "Fran Walsh",
+        "Philippa Boyens",
+        "Peter Jackson"
+      ],
+      "Actors": [
+        "Ian McKellen",
+        "Martin Freeman",
+        "Richard Armitage"
+      ],
+      "Genres": [
+        "Adventure",
+        "Fantasy"
+      ],
+      "Runtime": 144,
+      "Released": "17 Dec 2014"
+    },
+    "tt1170358": {
+      "Title": "The Hobbit: The Desolation of Smaug",
+      "Year": 2013,
+      "imdbID": "tt1170358",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMzU0NDY0NDEzNV5BMl5BanBnXkFtZTgwOTIxNDU1MDE@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+      "Plot": "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim the Lonely Mountain, their homeland, from the dragon Smaug.",
+      "Directors": [
+        "Peter Jackson"
+      ],
+      "Writers": [
+        "Fran Walsh",
+        "Philippa Boyens",
+        "Peter Jackson"
+      ],
+      "Actors": [
+        "Ian McKellen",
+        "Martin Freeman",
+        "Richard Armitage"
+      ],
+      "Genres": [
+        "Adventure",
+        "Fantasy"
+      ],
+      "Runtime": 161,
+      "Released": "13 Dec 2013"
     }
   },
   "jane": {
